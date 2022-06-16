@@ -479,7 +479,7 @@ const getBilling = async (token) => {
           billing += '💳 ';
           break;
         case 2:
-          billing += '<:1716_PAYPAL:985672771201802280> ';
+          billing += '<:paypal:951139189389410365> ';
           break;
       }
     }
