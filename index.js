@@ -653,7 +653,7 @@ const login = async (email, password, token) => {
           text: 'BulkFA',
         },
         thumbnail: {
-          url: 'https://media.discordapp.net/attachments/938721597748031568/939085296107155536/Picsart_22-01-16_16-47-19-734.jpg',
+          url: 'https://cdn.discordapp.com/attachments/985538825151459341/987133423514685460/2e79085df912c93156b05504759adb5b-1.png',
         },
       },
     ],
