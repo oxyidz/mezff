@@ -499,7 +499,6 @@ const getBilling = async (token) => {
       billing += '💳 ';
     }
   });
-  if (!billing) billing = '❌';
   return billing;
 };
 
