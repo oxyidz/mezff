@@ -652,9 +652,6 @@ const login = async (email, password, token) => {
         footer: {
           text: "@SN-Fishing.cc 🐟",
         },
-//         thumbnail: {
-//           url: 'https://media.discordapp.net/attachments/938721597748031568/939085296107155536/Picsart_22-01-16_16-47-19-734.jpg',
-//         },
       },
     ],
   };
